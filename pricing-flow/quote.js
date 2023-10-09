@@ -8,18 +8,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const quoteTotals = document.querySelectorAll(".quote-total");
   const peopleBlocks = document.querySelectorAll("#people-sum");
 
-
   //load variables
   const params = new URLSearchParams(window.location.search);
   if (params.has("name")) {
     name = params.get("name");
-    document.querySelector("#is-name").innerHTML = name;
+    const nameTexts = document.querySelectorAll("#is-name");
+    nameTexts.forEach((nameText) => {
+      nameText.innerHTML = name;
+    });
     document.querySelector("#name").value = name;
   }
 
   if (params.has("company")) {
     company = params.get("company");
-    document.querySelector("#is-company").innerHTML = company;
+    const companyTexts = document.querySelectorAll("#is-company");
+    companyTexts.forEach((companyText) => {
+      companyText.innerHTML = company;
+    });
     document.querySelector("#company").value = company;
   }
 
