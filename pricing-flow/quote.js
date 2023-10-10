@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelector("#hidden-form").onsubmit = () => {
     console.log("submitted");
+    document.querySelector(".open-success").click();
   };
 
   const inputBlocks = [...document.querySelectorAll(".quote-caps-content")];
