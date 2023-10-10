@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //validate email
   const formSubmit = document.querySelector("#form-submit");
-  const validateCheck = document.querySelector("#submit-check");
+  const validateCheck = document.querySelector("#email");
   const companyEmail = $("#Company-Email");
   const invalidDomains = ["gmail.com", "yahoo.com", "hotmail.com", "aol.com"];
 
