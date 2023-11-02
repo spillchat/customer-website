@@ -48,6 +48,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const openSuccess = document.querySelector(".open-success");
 
   //UI UPDATE
+  //--People
+  const peopleMinus = document.querySelector(".people-minus");
+  const peoplePlus = document.querySelector(".people-plus");
+
+  peopleMinus.onclick = () => {
+    minusPeople();
+  };
+
+  peoplePlus.onclick = () => {
+    plusPeople();
+  };
+
+  function minusPeople() {
+    if (employees < 2) {
+      return false;
+    }
+    employees = employees - 1;
+    calcPlan();
+    updateUI();
+  }
+  function plusPeople() {
+    employees = employees + 1;
+    calcPlan();
+    updateUI();
+  }
+
   //--THERAPY CAP
   const uiSessionSum = document.querySelector(".session-sum");
   let therapyCap = parseInt(uiSessionSum.innerHTML);
