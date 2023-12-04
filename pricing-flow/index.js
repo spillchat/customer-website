@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "https://" +
       window.location.hostname +
       window.location.pathname +
-      `/?name=${name}&email=${email}&employees=${teamSize}&struggling=${struggling}&plan=${plan}`;
+      `-quote?name=${name}&email=${email}&employees=${teamSize}&struggling=${struggling}&plan=${plan}`;
 
     document.querySelector("[data-selection='url']").value = formURL;
 
