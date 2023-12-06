@@ -158,16 +158,17 @@ document.addEventListener("DOMContentLoaded", () => {
   nextSlideButtons.forEach((button, index) => {
     button.addEventListener("click", () => {
       currIndex = index;
+      console.log("clicked");
       updateProgressDots();
     });
   });
 
   prevSlideButtons.forEach((button, index) => {
-    button.onclick = () => {
+    button.addEventListener("click", () => {
       currIndex = index - 1;
       console.log(index);
       updateProgressDots();
-    };
+    });
   });
 
   function updateProgressDots() {
