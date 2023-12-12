@@ -2,15 +2,19 @@ document.addEventListener("DOMContentLoaded", () => {
   //form element
   const form = document.querySelector("[superform-element='form']");
 
+  const events = ["change", "keyup", "keypress", "blur", "keydown", "click"];
+
   //track plan
   const planInputs = [...document.querySelectorAll("[data-selection='plan']")];
   let plan;
 
   planInputs.forEach((input) => {
-    input.addEventListener("change", () => {
-      plan = input.dataset.plan;
-      validateSteps();
-      console.log(plan);
+    events.forEach((event) => {
+      input.addEventListener(event, () => {
+        plan = input.dataset.plan;
+        validateSteps();
+        console.log(plan);
+      });
     });
   });
 
@@ -21,57 +25,72 @@ document.addEventListener("DOMContentLoaded", () => {
   let struggling;
 
   strugglingInputs.forEach((input) => {
-    input.addEventListener("change", () => {
-      struggling = input.dataset.no;
-      validateSteps();
-      console.log(struggling);
+    events.forEach((event) => {
+      input.addEventListener(event, () => {
+        struggling = input.dataset.no;
+        validateSteps();
+        console.log(struggling);
+      });
     });
   });
 
   //track team size
   const teamSizeInput = document.querySelector("[data-selection='team-size']");
+  teamSizeInput.value = 1;
   let teamSize;
 
-  teamSizeInput.onkeyup = () => {
-    teamSize = teamSizeInput.value;
-    validateSteps();
-    console.log(teamSize);
-  };
+  events.forEach((event) => {
+    teamSizeInput.addEventListener(event, (e) => {
+      teamSize = Number(teamSizeInput.value);
+      if (teamSize < 1) {
+        teamSize = 1;
+        teamSizeInput.value = 1;
+      }
+      validateSteps();
+      console.log(teamSize);
+    });
+  });
 
   //track name
   const nameInput = document.querySelector("[data-selection='name']");
   let name;
 
-  nameInput.onkeyup = () => {
-    name = nameInput.value;
-    validateSteps();
-    console.log(name);
-  };
+  events.forEach((event) => {
+    nameInput.addEventListener(event, () => {
+      name = nameInput.value;
+      validateSteps();
+      console.log(name);
+    });
+  });
 
   //track email
   const emailInput = document.querySelector("[data-selection='email']");
   let email;
 
-  emailInput.onkeyup = () => {
-    email = emailInput.value;
-    validateSteps();
-    console.log(email);
-  };
+  events.forEach((event) => {
+    emailInput.addEventListener(event, () => {
+      email = emailInput.value;
+      validateSteps();
+      console.log(email);
+    });
+  });
 
   //check for changes
   const validateCheckboxes = [
     ...document.querySelectorAll("[data-validate='changed']"),
   ];
 
-  validateCheckboxes.forEach((checkbox) => {
-    checkbox.addEventListener("change", () => {
-      validateSteps();
+  events.forEach((event) => {
+    validateCheckboxes.forEach((checkbox) => {
+      checkbox.addEventListener(event, () => {
+        validateSteps();
+      });
     });
   });
 
   //generate quote
   const loadQuoteButton = document.querySelector(
-    "[data-selection='load-quote']",
+    "[data-selection='load-quote']"
   );
 
   loadQuoteButton.addEventListener("click", () => {
@@ -248,7 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
       //validate single input
       if (stepToValidate.querySelector("[data-validate='input']")) {
         const inputToValidate = stepToValidate.querySelector(
-          "[data-validate='input']",
+          "[data-validate='input']"
         );
 
         if (inputToValidate.value.length > 0) {
