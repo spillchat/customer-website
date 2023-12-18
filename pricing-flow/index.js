@@ -44,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
       teamSize = Number(teamSizeInput.value);
       if (teamSize < 1) {
         teamSize = 1;
-        teamSizeInput.value = 1;
       }
       validateSteps();
       console.log(teamSize);
@@ -70,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
   events.forEach((event) => {
     emailInput.addEventListener(event, () => {
       email = emailInput.value;
+      emailInput.classList.remove("is-error");
       validateSteps();
       console.log(email);
     });
@@ -204,11 +204,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const finalStepButton = document.querySelector("[data-form='last-step']");
 
   finalStepButton.addEventListener("click", () => {
-    document
-      .querySelector(".form-header_loading")
-      .classList.remove("is-hidden");
+    [".form-header-text", ".form-header_loading"].forEach((item) => {
+      document.querySelector(item).classList.remove("is-hidden");
+    });
 
     document.querySelector(".form-header-dots").remove();
+    document.querySelector(".form-step_header-logo").remove();
   });
 
   //validate email
@@ -226,6 +227,8 @@ document.addEventListener("DOMContentLoaded", () => {
       companyEmail.val("");
       // add a 'use business mail' placeholder
       companyEmail.attr("placeholder", "Please enter a business email");
+      emailInput.classList.add("is-error");
+      console.log("error");
       // prevent form submission
       return false;
     } else {
