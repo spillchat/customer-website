@@ -36,15 +36,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //track team size
   const teamSizeInput = document.querySelector("[data-selection='team-size']");
-  teamSizeInput.value = 1;
-  let teamSize;
+  let teamSize = 0;
 
   events.forEach((event) => {
     teamSizeInput.addEventListener(event, (e) => {
       teamSize = Number(teamSizeInput.value);
-      if (teamSize < 1) {
-        teamSize = 1;
-      }
       validateSteps();
       console.log(teamSize);
     });
@@ -104,6 +100,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const quoteLink = document.querySelector(".quote-link");
     let url = quoteLink.getAttribute("href");
+
+    //validate quote data
 
     let newUrl =
       url +
