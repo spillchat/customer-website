@@ -212,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //validate email
   const validateCheck = document.querySelector("[data-form='validate-email']");
-  const invalidDomains = ["gmail.com", "yahoo.com", "hotmail.com", "aol.com"];
+  const invalidDomains = ["gmail.com", "yahoo.com", "hotmail.com", "@hotmail.co.uk","@outlook.com","@outlook.co.uk", "aol.com"];
   const companyEmail = $("[data-selection='email']");
 
   validateCheck.onclick = () => {
