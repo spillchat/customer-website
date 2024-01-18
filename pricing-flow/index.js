@@ -118,11 +118,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     formSubmitButton.click();
 
-    // redirectURL(1500000);
+    redirectURL(8000);
   }
 
+  //countdown timer
+  const countdownTimer = document.querySelector(".countdown-timer");
+
   function redirectURL(time) {
-    console.log(time);
+    let counter = Number(time / 1000);
+    countdownTimer.innerText = counter.toString();
+
+    setInterval(() => {
+      counter--;
+      countdownTimer.innerText = counter.toString();
+    }, 1000);
+
     setTimeout(() => {
       document.querySelector(".quote-link").click();
     }, time);
@@ -212,7 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //validate email
   const validateCheck = document.querySelector("[data-form='validate-email']");
-  const invalidDomains = ["gmail.com", "yahoo.com", "hotmail.com", "hotmail.co.uk","outlook.com","outlook.co.uk", "aol.com"];
+  const invalidDomains = ["gmail.com", "yahoo.com", "hotmail.com", "aol.com"];
   const companyEmail = $("[data-selection='email']");
 
   validateCheck.onclick = () => {
