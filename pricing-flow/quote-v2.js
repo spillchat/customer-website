@@ -123,10 +123,10 @@ document.addEventListener("DOMContentLoaded", () => {
   //update ui
   function updateUI() {
     //names
-    const names = [...document.querySelectorAll("[data-quote='name']")];
-    names.forEach((name) => {
-      name.innerText = clientInfo.name.toString();
-    });
+  //   const names = [...document.querySelectorAll("[data-quote='name']")];
+  //   names.forEach((name) => {
+  //     name.innerText = clientInfo.name.toString();
+  //   });
 
     const planInfos = [...document.querySelectorAll("[data-quote='plan']")];
     planInfos.forEach((planInfo) => {
