@@ -15,9 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       };
 
-      dropdown.addEventListener("blur", () => {
-        closeDropdowns();
-      });
+      // dropdown.addEventListener("blur", () => {
+      //   closeDropdowns();
+      // });
     });
 
     function closeDropdowns() {
