@@ -42,15 +42,18 @@ window.addEventListener('load', () => {
 	//Update UI
 	const displayPlan = document.querySelector('#display-plan');
 	const displayAddons = document.querySelector('#display-addons');
+	const displayBundle = document.querySelector("#display-bundle");
 
 	function updateUI() {
 		//update plan
 		if (therapyPlan === 'monthly') {
 			displayPlan.textContent = 'Monthly bundle';
+			displayBundle.textContent = 'Tailored to your team size';
 		}
 
 		if (therapyPlan === 'payg') {
 			displayPlan.textContent = 'Pay-as-you-go';
+			displayBundle.textContent = 'Choose the number of sessions';
 		}
 
 		//update addons
