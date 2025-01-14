@@ -40,28 +40,37 @@ window.addEventListener('load', () => {
 	}
 
 	//Update UI
-	const displayPlan = document.querySelector('#display-plan');
-	const displayAddons = document.querySelector('#display-addons');
-	const displayBundle = document.querySelector("#display-bundle");
+	const displayPlan = document.querySelectorAll('#display-plan');
+	const displayAddons = document.querySelectorAll('#display-addons');
+	const displayBundle = document.querySelectorAll('#display-bundle');
+
+	function updateElements(elements, content) {
+		elements.forEach((element) => (element.textContent = content));
+	}
 
 	function updateUI() {
 		//update plan
 		if (therapyPlan === 'monthly') {
-			displayPlan.textContent = 'Monthly bundle';
-			displayBundle.textContent = 'Tailored to your team size';
+			updateElements(displayPlan, 'Monthly bundle');
+			updateElements(displayBundle, 'Tailored to your team size');
 		}
 
 		if (therapyPlan === 'payg') {
-			displayPlan.textContent = 'Pay-as-you-go';
-			displayBundle.textContent = 'Choose the number of sessions';
+			updateElements(displayPlan, 'Pay-as-you-go');
+			updateElements(displayBundle, 'Choose the number of sessions');
+			
 		}
 
 		//update addons
 		const addons = [...addonSet].length;
 		if (addons > 0) {
-			displayAddons.textContent = `${addons} additional features`;
+			if (addons === 1) {
+				updateElements(displayAddons, `${addons} additional feature`);
+			} else {
+				updateElements(displayAddons, `${addons} additional features`);
+			}
 		} else {
-			displayAddons.textContent = `No features selected`;
+			updateElements(displayAddons, `No features selected`);
 		}
 	}
 
