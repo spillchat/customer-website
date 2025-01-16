@@ -58,7 +58,6 @@ window.addEventListener('load', () => {
 		if (therapyPlan === 'payg') {
 			updateElements(displayPlan, 'Pay-as-you-go');
 			updateElements(displayBundle, 'Choose the number of sessions');
-			
 		}
 
 		//update addons
