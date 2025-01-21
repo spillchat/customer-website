@@ -1,13 +1,23 @@
 window.addEventListener('load', () => {
 	const form = document.querySelector('#wf-form-Build-Your-Plan');
 	const submitButton = document.querySelector('#form-submit');
+	const featuresBar = document.querySelector('.features-bar');
+	let featuresFarIsVisible = false;
 
 	const planRadios = [...document.querySelectorAll('#therapy-plans input')];
-	let therapyPlan = 'monthly';
+	let therapyPlan = null;
+
+	function showFeaturesBar() {
+		if (!featuresFarIsVisible) {
+			featuresBar.classList.remove('is-hidden');
+			featuresFarIsVisible = true;
+		}
+	}
 
 	planRadios.forEach((radio) => {
 		radio.addEventListener('change', function () {
 			radioChanged(radio);
+			showFeaturesBar();
 		});
 	});
 
@@ -26,6 +36,7 @@ window.addEventListener('load', () => {
 	addonChecks.forEach((check) => {
 		check.addEventListener('change', function () {
 			checkChanged(check);
+			showFeaturesBar();
 		});
 	});
 
@@ -58,6 +69,11 @@ window.addEventListener('load', () => {
 		if (therapyPlan === 'payg') {
 			updateElements(displayPlan, 'Pay-as-you-go');
 			updateElements(displayBundle, 'Choose the number of sessions');
+		}
+
+		if(therapyPlan === null){
+			updateElements(displayPlan, 'Choose therapy plan');
+			updateElements(displayBundle, 'Select a therapy plan');
 		}
 
 		//update addons
